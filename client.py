@@ -8,7 +8,7 @@ def recv_message(sock):
 
 # AF_INET : IPv4 사용, SOCK_STREAM : TCP 패킷 수신
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.connect(('127.0.0.1', 8274))
+sock.connect(('127.0.0.1', 8888))
 
 th = Thread(target=recv_message, args=(sock,))
 th.daemon = True
