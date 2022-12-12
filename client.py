@@ -6,6 +6,7 @@ def recv_message(sock):
         msg = sock.recv(1024) # 1024 바이트 데이터 수신
         print(msg.decode())
 
+# AF_INET : IPv4 사용, SOCK_STREAM : TCP 패킷 수신
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(('127.0.0.1', 8274))
 
