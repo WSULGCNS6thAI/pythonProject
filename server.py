@@ -1,12 +1,12 @@
 import socketserver
 
 class MyHandler(socketserver.BaseRequestHandler):
-    users = {}
+    users = {} # 채팅 참여 유저 리스트
 
     def handle(self):
         print(self.client_address)
         while True:
-            self.request.send("채팅 닉네임을 입력하세요: ".encode())
+            self.request.send("닉네임을 입력하세요: ".encode())
             nickname = self.request.recv(1024).decode()
             if nickname in self.users:
                 self.request.send("이미 등록된 닉네임 입니다.\n".encode())
@@ -19,8 +19,8 @@ class MyHandler(socketserver.BaseRequestHandler):
                 break
         while True:
             msg = self.request.recv(1024)
-            if msg.decode() == "/bye":
-                print("exit client")
+            if msg.decode() == "/종료":
+                print("클라이언트 종료")
                 self.request.close()
                 break
             for sock, _ in self.users.values():
