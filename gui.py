@@ -27,7 +27,7 @@ def send_message(event=None):
     message = input_msg.get()
     sock.send(bytes(message, "utf-8"))
     input_msg.set("")
-    if message == "/bye":
+    if message == "/종료":
         sock.close()
         window.quit()
 
@@ -41,7 +41,7 @@ win_connect.protocol("WM_DELETE_WINDOW", window_input_close)
 win_connect.title("접속대상")
 
 tkinter.Label(win_connect, text="접속대상").grid(row=0, column=0)
-input_addr_string = tkinter.StringVar(value="127.0.0.1:8274")
+input_addr_string = tkinter.StringVar(value="127.0.0.1:8888")
 input_addr = tkinter.Entry(win_connect, textvariable=input_addr_string, width=20)
 input_addr.grid(row=0, column=1, padx=5, pady=5)
 connect_button = tkinter.Button(win_connect, text="접속하기", command=connect)
